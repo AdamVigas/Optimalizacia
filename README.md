@@ -1,0 +1,3 @@
+# Optimalizacia
+
+Použitý jazyk : Java
