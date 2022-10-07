@@ -113,4 +113,22 @@ class MaticaTest {
         MATICA_TEST.odcitanieMaticaMatica(MATICA_TEST,DRUHA_MATICA_TEST);
         Arrays.deepEquals(OCAKAVANY_VYSLEDOK.getPole(), MATICA_TEST.getPole());
     }
+
+    /**
+     * Otocenie matice , pole ktore bolo v riadku je teraz v stlpci
+     */
+    @Test
+    void otocenieMatice() {
+        double[][] OCAKAVANE_POLE = {
+                {1,4,7},
+                {2,5,8},
+                {3,6,9}
+        };
+        //inicializacia matice s polom
+        Matica OCAKAVANY_VYSLEDOK = new Matica(OCAKAVANE_POLE);
+
+        //operacia
+        MATICA_TEST = MATICA_TEST.otocenieMatice();
+        Arrays.deepEquals(OCAKAVANY_VYSLEDOK.getPole(), MATICA_TEST.getPole());
+    }
 }

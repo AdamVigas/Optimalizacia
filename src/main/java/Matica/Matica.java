@@ -40,6 +40,22 @@ public class Matica {
     }
 
     /**
+     * Otocenie matice riadky na stlpce
+     * @return Otocena matica
+     */
+    public Matica otocenieMatice() {
+        double[][] pole = new double[this.getPole()[0].length][this.getPole().length];
+        Matica tempMatica = new Matica(pole);
+
+        for(int i=0; i < this.getPole().length;i++){
+            for (int j = 0; j < this.getPole()[0].length; j++) {
+                tempMatica.getPole()[j][i] = this.getPole()[i][j];
+            }
+        }
+        return tempMatica;
+    }
+
+    /**
      * Nasobenie : Matica x Matica
      * @return Vysledna matica
      */
