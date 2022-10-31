@@ -14,7 +14,7 @@ class MaticaTest {
             };
 
     double [] VEKTOR_POLE = {2,2,2};
-    Matica MATICA_TEST = new Matica(MATICA_POLE);
+    SimpleMatrix MATICA_TEST = new SimpleMatrix(MATICA_POLE);
     Vektor VEKTOR_TEST = new Vektor(VEKTOR_POLE);
 
     /**
@@ -28,7 +28,7 @@ class MaticaTest {
                 {14,16,18}
         };
         //inicializacia matice s polom
-        Matica OCAKAVANY_VYSLEDOK = new Matica(OCAKAVANE_POLE);
+        SimpleMatrix OCAKAVANY_VYSLEDOK = new SimpleMatrix(OCAKAVANE_POLE);
         //operacia
         MATICA_TEST.nasobenieMaticaVektor(VEKTOR_TEST);
         Arrays.deepEquals(OCAKAVANY_VYSLEDOK.getPole(), MATICA_TEST.getPole());
@@ -45,7 +45,7 @@ class MaticaTest {
                 {700,800,900}
         };
         //inicializacia matice s polom
-        Matica OCAKAVANY_VYSLEDOK = new Matica(OCAKAVANE_POLE);
+        SimpleMatrix OCAKAVANY_VYSLEDOK = new SimpleMatrix(OCAKAVANE_POLE);
         //inicializacia konstanty
         int konstanta = 100;
         //operacia
@@ -64,7 +64,7 @@ class MaticaTest {
                 {49,64,81}
         };
         //inicializacia matice s polom
-        Matica OCAKAVANY_VYSLEDOK = new Matica(OCAKAVANE_POLE);
+        SimpleMatrix OCAKAVANY_VYSLEDOK = new SimpleMatrix(OCAKAVANE_POLE);
 
         //operacia
         MATICA_TEST.nasobenieMaticaMatica(MATICA_TEST,MATICA_TEST);
@@ -82,7 +82,7 @@ class MaticaTest {
                 {14,16,18}
         };
         //inicializacia matice s polom
-        Matica OCAKAVANY_VYSLEDOK = new Matica(OCAKAVANE_POLE);
+        SimpleMatrix OCAKAVANY_VYSLEDOK = new SimpleMatrix(OCAKAVANE_POLE);
 
         //operacia
         MATICA_TEST.scitanieMaticaMatica(MATICA_TEST,MATICA_TEST);
@@ -106,9 +106,9 @@ class MaticaTest {
                 {3,3,3},
                 {3,3,3}
         };
-        Matica DRUHA_MATICA_TEST = new Matica(DRUHE_POLE_TEST);
+        SimpleMatrix DRUHA_MATICA_TEST = new SimpleMatrix(DRUHE_POLE_TEST);
         //inicializacia matice s polom
-        Matica OCAKAVANY_VYSLEDOK = new Matica(OCAKAVANE_POLE);
+        SimpleMatrix OCAKAVANY_VYSLEDOK = new SimpleMatrix(OCAKAVANE_POLE);
         //operacia
         MATICA_TEST.odcitanieMaticaMatica(MATICA_TEST,DRUHA_MATICA_TEST);
         Arrays.deepEquals(OCAKAVANY_VYSLEDOK.getPole(), MATICA_TEST.getPole());
@@ -125,7 +125,7 @@ class MaticaTest {
                 {3,6,9}
         };
         //inicializacia matice s polom
-        Matica OCAKAVANY_VYSLEDOK = new Matica(OCAKAVANE_POLE);
+        SimpleMatrix OCAKAVANY_VYSLEDOK = new SimpleMatrix(OCAKAVANE_POLE);
 
         //operacia
         MATICA_TEST = MATICA_TEST.otocenieMatice();

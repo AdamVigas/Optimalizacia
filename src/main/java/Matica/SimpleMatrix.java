@@ -2,9 +2,9 @@ package Matica;
 
 import Vektor.Vektor;
 
-public class Matica {
+public class SimpleMatrix {
 
-    public Matica(double[][] pole) {
+    public SimpleMatrix(double[][] pole) {
         this.pole = pole;
     }
 
@@ -13,6 +13,12 @@ public class Matica {
     public double[][] getPole() {
         return pole;
     }
+
+    /**
+     * Podpora pre nasobenie matic zlomkom
+     */
+
+
 
     /**
      * Nasobenie : Matica x Vektor
@@ -43,9 +49,9 @@ public class Matica {
      * Otocenie matice riadky na stlpce
      * @return Otocena matica
      */
-    public Matica otocenieMatice() {
+    public SimpleMatrix otocenieMatice() {
         double[][] pole = new double[this.getPole()[0].length][this.getPole().length];
-        Matica tempMatica = new Matica(pole);
+        SimpleMatrix tempMatica = new SimpleMatrix(pole);
 
         for(int i=0; i < this.getPole().length;i++){
             for (int j = 0; j < this.getPole()[0].length; j++) {
@@ -59,7 +65,7 @@ public class Matica {
      * Nasobenie : Matica x Matica
      * @return Vysledna matica
      */
-    public Matica nasobenieMaticaMatica(Matica prva, Matica druha) {
+    public SimpleMatrix nasobenieMaticaMatica(SimpleMatrix prva, SimpleMatrix druha) {
         double[][] vysl = new double[prva.getPole().length][druha.getPole()[0].length];
         for(int i = 0; i < prva.getPole().length; i++) {
             for (int j = 0; j <druha.getPole()[0].length; j++) {
@@ -68,35 +74,35 @@ public class Matica {
                 }
             }
         }
-        return new Matica(vysl);
+        return new SimpleMatrix(vysl);
     }
 
     /**
      * Scitanie : Matica + Matica
      * @return Vysledna matica
      */
-    public Matica scitanieMaticaMatica(Matica prva, Matica druha) {
+    public SimpleMatrix scitanieMaticaMatica(SimpleMatrix prva, SimpleMatrix druha) {
         double[][] vysl = new double[prva.getPole().length][druha.getPole()[0].length];
         for(int i = 0; i < prva.getPole().length; i++) {
             for (int j = 0; j <druha.getPole()[0].length; j++) {
                     vysl[i][j] += prva.getPole()[i][j] + druha.getPole()[i][j];
             }
         }
-        return new Matica(vysl);
+        return new SimpleMatrix(vysl);
     }
 
     /**
      * Odcitanie : Matica - Matica
      * @return Vysledna matica
      */
-    public Matica odcitanieMaticaMatica(Matica prva, Matica druha) {
+    public SimpleMatrix odcitanieMaticaMatica(SimpleMatrix prva, SimpleMatrix druha) {
         double[][] vysl = new double[prva.getPole().length][druha.getPole()[0].length];
         for(int i = 0; i < prva.getPole().length; i++) {
             for (int j = 0; j <druha.getPole()[0].length; j++) {
                 vysl[i][j] += prva.getPole()[i][j] - druha.getPole()[i][j];
             }
         }
-        return new Matica(vysl);
+        return new SimpleMatrix(vysl);
     }
 
     /**

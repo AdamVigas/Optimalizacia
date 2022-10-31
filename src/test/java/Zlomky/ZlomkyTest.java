@@ -6,8 +6,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class ZlomkyTest {
 
-    Zlomky prvyZlomok = new Zlomky(6,4);
-    Zlomky druhyZlomok = new Zlomky(4,3);
+    Zlomok prvyZlomok = new Zlomok(6,4);
+    Zlomok druhyZlomok = new Zlomok(4,3);
 
 
     /**
@@ -15,8 +15,8 @@ class ZlomkyTest {
      */
     @Test
     void add() {
-        Zlomky ocakavanyVysledok = new Zlomky(34,12);
-        Zlomky operacia = prvyZlomok.add(druhyZlomok);
+        Zlomok ocakavanyVysledok = new Zlomok(34,12);
+        Zlomok operacia = prvyZlomok.add(druhyZlomok);
         assertEquals(ocakavanyVysledok.toString(),operacia.toString());
     }
 
@@ -26,8 +26,8 @@ class ZlomkyTest {
      */
     @Test
     void sub() {
-        Zlomky ocakavanyVysledok = new Zlomky(2,12);
-        Zlomky operacia = prvyZlomok.sub(druhyZlomok);
+        Zlomok ocakavanyVysledok = new Zlomok(2,12);
+        Zlomok operacia = prvyZlomok.sub(druhyZlomok);
         assertEquals(ocakavanyVysledok.toString(),operacia.toString());
     }
 
@@ -36,8 +36,8 @@ class ZlomkyTest {
      */
     @Test
     void mult() {
-        Zlomky ocakavanyVysledok = new Zlomky(24,12);
-        Zlomky operacia = prvyZlomok.mult(druhyZlomok);
+        Zlomok ocakavanyVysledok = new Zlomok(24,12);
+        Zlomok operacia = prvyZlomok.mult(druhyZlomok);
         assertEquals(ocakavanyVysledok.toString(),operacia.toString());
     }
 
@@ -46,8 +46,8 @@ class ZlomkyTest {
      */
     @Test
     void div() {
-        Zlomky ocakavanyVysledok = new Zlomky(18,16);
-        Zlomky operacia = prvyZlomok.div(druhyZlomok);
+        Zlomok ocakavanyVysledok = new Zlomok(18,16);
+        Zlomok operacia = prvyZlomok.div(druhyZlomok);
         assertEquals(ocakavanyVysledok.toString(),operacia.toString());
     }
 }
