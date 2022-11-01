@@ -6,3 +6,4 @@ Aktivity:
 
 - vytvorená trieda Main
 - podpora pre matice,vektory a zlomky + testovania
+- implementacie metody Simplex
