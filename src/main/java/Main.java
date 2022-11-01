@@ -1,5 +1,5 @@
 import Matica.Matrix;
-import simplex.Simplex;
+import Simplex.Simplex;
 
 
 public class Main {
@@ -12,6 +12,10 @@ public class Main {
          * Simplexova trieda ju vyrata a vypise maticu s vysledkom - mam aj test triedu
          */
 
+        /**
+         * Zadanie na youtube : https://www.youtube.com/watch?v=FY97HLnstVw
+         */
+
         int[][] pole = {
                 {1, -7, -4, 0, 0, 0, 0},
                 {0, 2, 1, 1, 0, 0, 20},
@@ -19,7 +23,19 @@ public class Main {
                 {0, 1, 0, 0, 0, 1, 8}
         };
 
-        Matrix matrix = new Matrix(pole);
+        /**
+         * Vase zadanie z prezentacie
+         */
+
+        int[][] pole2 = {
+                {-3, -5, 0, 0, 0, 0},
+                {1, 0, 1, 0, 0, 4},
+                {0, 1, 0, 1, 0, 6},
+                {3, 2, 0, 0, 1, 18}
+        };
+
+        // TU STACI ZMENI IBA POLE - PRIPRAVIL SOM DVE NA UKAZKU
+        Matrix matrix = new Matrix(pole2);
         Simplex simplex = new Simplex(matrix);
         simplex.runSimplex();
     }

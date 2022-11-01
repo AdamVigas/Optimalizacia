@@ -2,6 +2,10 @@ package Matica;
 
 import Vektor.Vektor;
 
+/***
+ * TUTO TRIEDU MOMENTALNE NEPOUZIVAM , NO MOZNO SA MI ESTE BUDE HODIT
+ */
+@Deprecated
 public class SimpleMatrix {
 
     public SimpleMatrix(double[][] pole) {
