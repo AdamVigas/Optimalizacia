@@ -1,5 +1,6 @@
 import Matica.Matrix;
 import Simplex.Simplex;
+import Zlomky.Zlomok;
 
 
 public class Main {
@@ -34,10 +35,23 @@ public class Main {
                 {3, 2, 0, 0, 1, 18}
         };
 
+        int[][] pole3 = {
+                {-5, -4, 0, 0, 1, 0},
+                {3, 5, 1, 0, 0, 78},
+                {4, 1, 0, 1, 0, 36}
+        };
+
+
+
         // TU STACI ZMENI IBA POLE - PRIPRAVIL SOM DVE NA UKAZKU
         Matrix matrix = new Matrix(pole2);
         Simplex simplex = new Simplex(matrix);
         simplex.runSimplex();
+
+        /*Zlomok z1 = new Zlomok(99999999,1);
+        Zlomok z2 = new Zlomok(20,2);
+        //prve ked je mensie ako druhe tak je to true
+        System.out.println(Zlomok.minFraction(z2 ,z1));*/
     }
 
 }

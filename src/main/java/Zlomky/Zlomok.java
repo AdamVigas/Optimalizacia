@@ -44,7 +44,13 @@ public class Zlomok {
         return new Zlomok(n, d);
     }
 
+    public void setCitatel(int citatel) {
+        this.citatel = citatel;
+    }
 
+    public void setMenovatel(int menovatel) {
+        this.menovatel = menovatel;
+    }
 
     public static boolean maxFraction(Zlomok first, Zlomok sec)
     {

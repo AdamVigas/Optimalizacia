@@ -12,18 +12,10 @@ public class Simplex {
 
     Zlomok pivot = null;
 
-
     public Simplex(Matrix matrix) {
         this.matrix = matrix;
     }
 
-    public int getX() {
-        return x;
-    }
-
-    public int getY() {
-        return y;
-    }
 
     public void runSimplex() {
         matrix.printMatrix();
@@ -55,9 +47,8 @@ public class Simplex {
         }
     }
 
-
     public Zlomok findPivot() {
-        Zlomok min = new Zlomok(999999999,1);
+        Zlomok min = new Zlomok(99999999,1);
         for (int i = 1; i < matrix.getMatrix().length; i++) {
             pivot = matrix.getMatrix()[i][matrix.getMatrix()[0].length -1].div(matrix.getMatrix()[i][y]);
             if(pivot.getCitatel() != 0 && pivot.getMenovatel() != 0) {
@@ -75,7 +66,6 @@ public class Simplex {
         int men = matrix.getMatrix()[x][y].getMenovatel();
         if(!Zlomok.equalsFraction(matrix.getMatrix()[x][y],new Zlomok(1,1))) {
             for (int i = 0; i < matrix.getMatrix()[0].length ; i++) {
-
                 matrix.getMatrix()[x][i] = matrix.getMatrix()[x][i].mult(new Zlomok(men,cit));
             }
         }
@@ -90,6 +80,11 @@ public class Simplex {
                     if(matrix.getMatrix()[i][j].getCitatel() % matrix.getMatrix()[i][j].getMenovatel() == 0) {
                         num = matrix.getMatrix()[i][j].getCitatel() / matrix.getMatrix()[i][j].getMenovatel();
                         matrix.getMatrix()[i][j] = new Zlomok(num,1);
+                    }else if(matrix.getMatrix()[i][j].getCitatel() % 2 ==0 && matrix.getMatrix()[i][j].getMenovatel() % 2 == 0) {
+                        while((matrix.getMatrix()[i][j].getCitatel() % 2 ==0 && matrix.getMatrix()[i][j].getMenovatel() % 2 == 0)) {
+                            matrix.getMatrix()[i][j].setCitatel(matrix.getMatrix()[i][j].getCitatel()/2);
+                            matrix.getMatrix()[i][j].setMenovatel(matrix.getMatrix()[i][j].getMenovatel()/2);
+                        }
                     }
                 }else if(matrix.getMatrix()[i][j].getMenovatel() > 0 ) {
                     matrix.getMatrix()[i][j] = new Zlomok(0,0);
