@@ -35,6 +35,9 @@ public class Main {
                 {3, 2, 0, 0, 1, 18}
         };
 
+        /**
+         * Zadanie z youtube : https://www.youtube.com/watch?v=rzRZLGD_aeE
+         */
         int[][] pole3 = {
                 {-5, -4, 0, 0, 1, 0},
                 {3, 5, 1, 0, 0, 78},
@@ -42,9 +45,20 @@ public class Main {
         };
 
 
+        /***
+         * Zadanie z youtube : https://www.youtube.com/watch?v=XK26I9eoSl8
+         */
+        int[][] pole4 = {
+                {-6, -5, -4, 0, 0, 0, 1, 0},
+                {2, 1, 1, 1, 0, 0, 0, 180},
+                {1, 3, 2, 0, 1, 0, 0, 300},
+                {2, 1, 2, 0, 0, 1, 0, 240}
+        };
+
+
 
         // TU STACI ZMENI IBA POLE - PRIPRAVIL SOM DVE NA UKAZKU
-        Matrix matrix = new Matrix(pole2);
+        Matrix matrix = new Matrix(pole4);
         Simplex simplex = new Simplex(matrix);
         simplex.runSimplex();
 
