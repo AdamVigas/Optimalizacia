@@ -57,15 +57,11 @@ public class Main {
 
 
 
-        // TU STACI ZMENI IBA POLE - PRIPRAVIL SOM DVE NA UKAZKU
+        // TU STACI ZMENI IBA POLE - PRIPRAVIL SOM STYRI PRIKLADY NA UKAZKU
         Matrix matrix = new Matrix(pole4);
         Simplex simplex = new Simplex(matrix);
         simplex.runSimplex();
 
-        /*Zlomok z1 = new Zlomok(99999999,1);
-        Zlomok z2 = new Zlomok(20,2);
-        //prve ked je mensie ako druhe tak je to true
-        System.out.println(Zlomok.minFraction(z2 ,z1));*/
     }
 
 }
