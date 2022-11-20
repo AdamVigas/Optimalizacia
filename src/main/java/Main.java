@@ -1,6 +1,6 @@
 import Matica.Matrix;
 import Simplex.Simplex;
-import Zlomky.Zlomok;
+
 
 
 public class Main {
@@ -45,6 +45,7 @@ public class Main {
         };
 
 
+
         /***
          * Zadanie z youtube : https://www.youtube.com/watch?v=XK26I9eoSl8
          */
@@ -55,13 +56,20 @@ public class Main {
                 {2, 1, 2, 0, 0, 1, 0, 240}
         };
 
+        int[][] dveFazy = {
+               //x1 x2 p1 p2  b
+        /*z*/   {3, 2, 0, 0, 0},
+                {3, 2, 0, 0, 14},
+                {2, -4, -1, 0, 2},
+                {4, 3, 0, 1,  19}
+        };
 
 
-        // TU STACI ZMENI IBA POLE - PRIPRAVIL SOM STYRI PRIKLADY NA UKAZKU
-        Matrix matrix = new Matrix(pole4);
+
+
+        Matrix matrix = new Matrix(dveFazy);
         Simplex simplex = new Simplex(matrix);
-        simplex.runSimplex();
-
+        simplex.runSimplexWithPhase(2);
     }
 
 }

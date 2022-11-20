@@ -3,8 +3,8 @@ package Zlomky;
 public class Zlomok {
     private int citatel, menovatel;
     public Zlomok(int cit, int men){
-        citatel =cit;
-        menovatel =men;
+        citatel = cit;
+        menovatel = men;
     }
 
     public int getCitatel() {
