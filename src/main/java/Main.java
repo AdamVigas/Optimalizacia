@@ -44,6 +44,16 @@ public class Main {
                 {4, 1, 0, 1, 0, 36}
         };
 
+        /**
+         * Priklad z prezentacie - priklad zacyklenia - test anticyklickeho pravidla
+         */
+        int [][] anticyklicky_test  = {
+                {20, -53, -41, 204, 0, 0, 0, 0},
+                {2, -11, -5, 18, 1, 0, 0, 0},
+                {-1, 4, 2, -8, 0, 1, 0, 0},
+                {-2, 11, 5, -18, 0, 0, 1, 1}
+        };
+
 
 
         /***
@@ -56,20 +66,24 @@ public class Main {
                 {2, 1, 2, 0, 0, 1, 0, 240}
         };
 
+        /**
+         * Priklad z prezentacie - dve fazy
+         */
         int[][] dveFazy = {
                //x1 x2 p1 p2  b
-        /*z*/   {3, 2, 0, 0, 0},
+        /*z*/   {-2, -3, 0, 0, 0},
                 {3, 2, 0, 0, 14},
                 {2, -4, -1, 0, 2},
                 {4, 3, 0, 1,  19}
         };
 
 
-
-
-        Matrix matrix = new Matrix(dveFazy);
+        Matrix matrix = new Matrix(anticyklicky_test);
         Simplex simplex = new Simplex(matrix);
-        simplex.runSimplexWithPhase(2);
+        simplex.runSimplex();
+
+
+        //simplex.runSimplexWithPhase(2);
     }
 
 }

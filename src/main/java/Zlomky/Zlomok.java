@@ -94,6 +94,11 @@ public class Zlomok {
 
         // Compute ad-bc
         int Y = a * d - b * c;
+        if(first.citatel == 0 && sec.citatel != 0) {
+            return false;
+        }else if(first.citatel != 0 && sec.citatel == 0) {
+            return false;
+        }
 
         return (Y == 0) ? true : false;
     }

@@ -25,12 +25,25 @@ public class Simplex {
                 makePivotNumberOne();
                 eliminate();
                 matrix.printMatrix();
+
             }
         }
     }
 
     public void runSimplexWithPhase(int num) {
         twoPhase(num);
+        matrix.printMatrix();
+        while(!end) {
+            if(findSmallestNegative2()){
+                findPivot2();
+                makePivotNumberOne();
+                eliminate();
+                matrix.printMatrix();
+            }
+        }
+        eliminateFinishedPhase(num);
+        matrix.printMatrix();
+        end = false;
         while(!end) {
             if(findSmallestNegative2()){
                 findPivot2();
@@ -41,6 +54,101 @@ public class Simplex {
         }
     }
 
+    public void eliminateFinishedPhase(int num) {
+        Matrix newMatrix = new Matrix(new int[matrix.getMatrix().length-1][matrix.getMatrix()[0].length - num]);
+
+
+        for (int i = 0; i < matrix.getMatrix().length; i++) {
+            int temp = num;
+            for (int j = matrix.getMatrix()[0].length -1 - temp; j < matrix.getMatrix()[0].length -1; j++) {
+                matrix.getMatrix()[i][j] = new Zlomok(999999,999999);
+                temp--;
+            }
+        }
+
+        int g = 0;
+        for (int i = 1; i < matrix.getMatrix().length; i++) {
+            for (int j = 0; j < matrix.getMatrix()[0].length; j++) {
+                if(matrix.getMatrix()[i][j].getCitatel() != 999999 && matrix.getMatrix()[i][j].getMenovatel() != 999999) {
+                    newMatrix.getMatrix()[i-1][j-g] = matrix.getMatrix()[i][j];
+                    g = 0;
+                }else {
+                    g++;
+                }
+            }
+        }
+
+        matrix = newMatrix;
+    }
+
+
+    public boolean findSmallestNegative(){
+        int min = 1;
+        for (int i = 0; i < 1; i++) {
+            for (int j = 0; j < matrix.getMatrix()[0].length;j++) {
+                if(matrix.getMatrix()[i][j].getCitatel() < 0) {
+                    if(min >= matrix.getMatrix()[i][j].getCitatel()) {
+                        min = matrix.getMatrix()[i][j].getCitatel();
+                        x = i;
+                        y = j;
+                    }
+                }
+            }
+        }
+
+        if(min == 1) {
+            end = true;
+            return false;
+        }
+        return true;
+    }
+
+    public Zlomok findPivot() {
+        Zlomok min = new Zlomok(99999999,1);
+
+        for (int i = 1; i < matrix.getMatrix().length; i++) {
+            if(matrix.getMatrix()[i][matrix.getMatrix()[0].length -1].getCitatel() >= 0 && matrix.getMatrix()[i][y].getCitatel() > 0) {
+                pivot = matrix.getMatrix()[i][matrix.getMatrix()[0].length -1].div(matrix.getMatrix()[i][y]);
+
+                if(pivot.getCitatel() >= 0 && pivot.getMenovatel() >= 0) {
+                    if(Zlomok.equalsFraction(pivot, min)) {
+                        int temp = compareVectors(i);
+                        min = matrix.getMatrix()[temp][y];
+                        x = temp;
+                    }else {
+                        if(pivot.getCitatel() == 0 && pivot.getMenovatel() == 0) {
+                            min  = pivot;
+                            x = i;
+                        }
+                        if(Zlomok.minFraction(pivot,min)) {
+                            min = pivot;
+                            x = i;
+                        }
+                    }
+
+                }
+
+            }
+
+        }
+
+        return min;
+    }
+
+    public int compareVectors(int i) {
+        for (int j = 0; j < matrix.getMatrix()[0].length; j ++ ) {
+            if(matrix.getMatrix()[i][j].getCitatel() > 0 && matrix.getMatrix()[i-1][j].getCitatel() > 0) {
+                if(!Zlomok.equalsFraction(matrix.getMatrix()[i][j],matrix.getMatrix()[i-1][j])) {
+                    if(Zlomok.minFraction(matrix.getMatrix()[i][j], matrix.getMatrix()[i-1][j])) {
+                        return i;
+                    }else return i-1;
+                }
+            }
+        }
+        return 0;
+    }
+
+
     public void twoPhase(int num) {
         Matrix finalnaMatica = null;
         int cislo = 0;
@@ -50,14 +158,14 @@ public class Simplex {
         boolean found = false;
         for (int i = 1; i < matrix.getMatrix().length;i++) {
             for (int j = 0; j < matrix.getMatrix()[0].length;j++) {
-                    if(j >= num && j!=matrix.getMatrix()[0].length -1) {
-                        if(Zlomok.equalsFraction(matrix.getMatrix()[i][j], new Zlomok(1,1)) && matrix.getMatrix()[i][j].getCitatel() != 0) {
-                            found = true;
-                            break;
-                        }else {
-                            found = false;
-                        }
+                if(j >= num && j!=matrix.getMatrix()[0].length -1) {
+                    if(Zlomok.equalsFraction(matrix.getMatrix()[i][j], new Zlomok(1,1)) && matrix.getMatrix()[i][j].getCitatel() != 0) {
+                        found = true;
+                        break;
+                    }else {
+                        found = false;
                     }
+                }
             }
             if(found) {
                 found = false;
@@ -84,7 +192,7 @@ public class Simplex {
                     if(pole[ss] == null) {
                         pole[ss] = new Zlomok(0,0).add(new Zlomok(-matrix1.getMatrix()[i][ss].getCitatel(),matrix1.getMatrix()[i][ss].getMenovatel()));
                     }else
-                     pole[ss].add(new Zlomok(matrix1.getMatrix()[i][ss].getCitatel(),matrix1.getMatrix()[i][ss].getMenovatel()));
+                        pole[ss].add(new Zlomok(matrix1.getMatrix()[i][ss].getCitatel(),matrix1.getMatrix()[i][ss].getMenovatel()));
                 }
             }
             matrix = matrix1;
@@ -126,40 +234,6 @@ public class Simplex {
             }
         }
         this.matrix = finalnaMatica;
-    }
-
-    public boolean findSmallestNegative(){
-        int min = 1;
-        for (int i = 0; i < 1; i++) {
-            for (int j = 0; j < matrix.getMatrix()[0].length;j++) {
-                if(matrix.getMatrix()[i][j].getCitatel() < 0) {
-                    if(min >= matrix.getMatrix()[i][j].getCitatel()) {
-                        min = matrix.getMatrix()[i][j].getCitatel();
-                        x = i;
-                        y = j;
-                    }
-                }
-            }
-        }
-        if(min == 1) {
-            end = true;
-            return false;
-        }
-        return true;
-    }
-
-    public Zlomok findPivot() {
-        Zlomok min = new Zlomok(99999999,1);
-        for (int i = 1; i < matrix.getMatrix().length; i++) {
-            pivot = matrix.getMatrix()[i][matrix.getMatrix()[0].length -1].div(matrix.getMatrix()[i][y]);
-            if(pivot.getCitatel() != 0 && pivot.getMenovatel() != 0) {
-                if(Zlomok.minFraction(pivot,min)) {
-                    min = pivot;
-                    x = i;
-                }
-            }
-        }
-        return min;
     }
 
 
